@@ -1,0 +1,16 @@
+{% extends "poem/base.html" %}
+
+{% block title %}
+    LogOut
+{% endblock %}
+
+
+{% block content %}
+    <div class='alert alert-success'>Successfully Logged Out.</div>
+    <div class='margin-vert-10'>
+        <small class="form-footer-small">
+            <a href="{% url 'login' %}">Login Again</a>
+        </small>
+    </div>
+
+{% endblock %}

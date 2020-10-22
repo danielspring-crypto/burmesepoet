@@ -1,0 +1,41 @@
+{% extends "poem/base.html" %}
+
+{% block title %}
+	Home Page
+{% endblock %}
+
+{% block content %}
+	<!-- Write for loop to display posts -->
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2" href="#">{{ object.author }}</a>
+		      <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}
+		  	</small>
+		  	<div>
+		  		{% if object.author == user %}
+		  		<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">ပြင်မည်</a>
+		  		<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">ဖျက်မည်</a>
+		  		{% else %}
+		  			{% if user.is_authenticated %}
+		  				{% if user.is_liked %}
+		  					Liked
+		  				{% else %}
+		  				<form action="{% url 'like_post' object.id %}" method="POST">
+		  					{% csrf_token %}
+		  					<button type="submit" class="btn btn-sm" name='post_id' value="{{ object.id }}"> 
+		  						Like
+		  					</button>
+		  				</form>
+		  				{% endif %}
+		  			{% endif %}
+		  		{% endif %}
+		  	</div>
+		    </div>
+		    <h2>{{ object.title }}</h2>
+		    <p class="article-content">{{ object.content|safe }}</p>
+		    {{ total_likes }} - likes
+		  </div>
+		</article>
+
+{% endblock content %}

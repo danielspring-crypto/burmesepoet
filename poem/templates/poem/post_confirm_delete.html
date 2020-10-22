@@ -1,0 +1,27 @@
+{% extends "poem/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Delete
+{% endblock %}
+
+
+
+{% block content %}
+    <div class='user-register border-style-1'>
+        <form class='register-form' method='POST'>
+            {% csrf_token %}
+            <fieldset class="form-field-set">
+                <legend class="legend-style-1"> post ကို ဖျက်မည်။</legend>
+                <h4>ဖျက်လိုက်သော post ကို ပြန်လည်ရရှိနိုင်မည် မဟုတ်ပါ။</h4>
+            </fieldset>
+            <br>
+
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">ဖျက်မည်</button>
+                <a class="btn btn-outline-warning" href="{% url 'post-detail' post.id %}">မလုပ်တော့ပါ</a>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

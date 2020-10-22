@@ -1,0 +1,24 @@
+{% extends "poem/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Create New
+{% endblock %}
+
+
+
+{% block content %}
+    <div class='user-register border-style-1'>
+        <form class='register-form' method='POST'>
+            {% csrf_token %}
+            <fieldset class="form-field-set">
+                <legend class="legend-style-1"> New Post</legend>
+                {{ form.media }}
+                {{ form|crispy }}
+            </fieldset>
+
+            <input class='form-submit-button margin-top-20' type='submit' value='POST'/>
+        </form>
+
+    </div>
+{% endblock %}

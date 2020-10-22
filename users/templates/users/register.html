@@ -1,0 +1,28 @@
+{% extends "poem/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+
+
+{% block content %}
+    <div class='user-register border-style-1'>
+        <form class='register-form' method='POST'>
+            {% csrf_token %}
+            <fieldset class="form-field-set">
+                <legend class="legend-style-1"> Join Today! </legend>
+                {{ form|crispy }}
+            </fieldset>
+
+            <input class='form-submit-button margin-top-20' type='submit' value='Sign Up'/>
+        </form>
+        <div class='form-footer'>
+            <small class="form-footer-small">
+                Already have an account? 
+                <a href="{% url 'login' %}">Sign In</a> 
+            </small>
+        </div>
+    </div>
+{% endblock %}
